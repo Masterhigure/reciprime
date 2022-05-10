@@ -8,3 +8,4 @@ print(os.stat("reciprime.py").st_mtime)
 for scene in scenes:
     path = "media/videos/reciprime/480p15/" + scene + ".mp4"
     print(os.stat(path).st_mtime)
+
