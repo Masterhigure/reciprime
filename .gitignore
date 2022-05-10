@@ -1,0 +1,11 @@
+media/Tex*
+media/images/reci*
+media/vi*
+media/tex*
+media/audio*
+__pycache__
+node_modules
+package*
+pbcopy
+pyrightconfig*
+media/.DS_store
