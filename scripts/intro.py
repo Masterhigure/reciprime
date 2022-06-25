@@ -1,8 +1,5 @@
 import manim as m
-
-def add_background(scene):
-    bg = m.ImageMobject("media/images/penrose.png")
-    scene.add(bg)
+from background import add_background
 
 class Intro(m.Scene):
     def intro(self):

@@ -1,8 +1,5 @@
 import manim as m
-
-def add_background(scene):
-    bg = m.ImageMobject("media/images/penrose.png")
-    scene.add(bg)
+from background import add_background
 
 class Plan(m.Scene):
     def main_idea(self):
@@ -21,7 +18,7 @@ class Plan(m.Scene):
         idea2 = m.Tex("assume the limit is finite:", font_size=72).next_to(true_limit, m.UP)
         idea1.next_to(idea2, m.UP)
         limit = m.MathTex(r"\sum_{p \textrm{ prime}}\frac1p = {}", "L < {}", r"\infty")
-        conclusion1 = m.Tex(r"We will conclude that the set $\{1, 2, \ldots, N\}$", font_size=72).next_to(limit, m.DOWN)
+        conclusion1 = m.Tex(r"We will conclude that some set $\{1, 2, \ldots, N\}$", font_size=72).next_to(limit, m.DOWN)
         conclusion2 = m.Tex("has fewer than $N$ elements.", font_size=72).next_to(conclusion1, m.DOWN)
         self.play(m.Write(headline))
         self.play(m.Write(true_limit))
