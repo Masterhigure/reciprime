@@ -20,6 +20,6 @@ for scene_name in scene_names:
 with open("media/videos/tmp.txt", mode="w") as fs:
      fs.writelines([f"file '{scene_name}/1080p60/{scene_name.capitalize()}.mp4'\n" for scene_name in scene_names])
 
-os.system("ffmpeg -f concat -i media/videos/tmp.txt -c copy output.mp4")
+os.system("ffmpeg -f concat -i media/videos/tmp.txt -c copy -y output.mp4")
 
 
