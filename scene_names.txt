@@ -2,3 +2,5 @@ intro
 problem
 plan
 primesize
+split
+smalls

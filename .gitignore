@@ -1,8 +1,11 @@
 media/Tex*
 media/images/reci*
+media/images/small*
 media/vi*
 media/tex*
 media/audio*
+media/smalls*
+media/split*
 __pycache__
 node_modules
 package*
