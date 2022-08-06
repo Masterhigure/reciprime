@@ -1,6 +1,6 @@
-import manim as m
 
 def add_background(scene):
-    bg = m.ImageMobject("media/images/penrose.png")
+    from manim import ImageMobject
+    bg = ImageMobject("media/images/penrose.png")
     scene.add(bg)
 
