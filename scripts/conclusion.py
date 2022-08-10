@@ -68,9 +68,9 @@ class Conclusion(m.Scene):
         self.play(*[mob.animate.move_to(centers4c[i]) for i, mob in enumerate(text4c)])
 
         self.wait(2)
-        text5 = m.MathTex(r"{}= 2^{2k + 2} + 2^{2k+3}", "< 2^{2k+3} + 2^{2k+3}", r"= 2\cdot 2^{2k + 3} = 2^{2k+4}")
+        text5 = m.MathTex(r"{}= 2^{2k + 2} + 2^{2k+3}", "< 2^{2k+3} + 2^{2k+3}", r"= 2\cdot 2^{2k + 3}", " = 2^{2k+4}")
         text5[0:2].next_to(text4c, m.DOWN, buff=0.5)
-        text5[2].next_to(text5[0:2], m.DOWN, buff=0.5)
+        text5[2:4].next_to(text5[0:2], m.DOWN, buff=0.5)
         self.play(m.Indicate(text4c[2:5]))
         self.play(m.Write(text5[0]))
         self.wait()
@@ -80,17 +80,21 @@ class Conclusion(m.Scene):
         self.play(m.Write(text5[1][0]))
         self.wait()
         self.play(m.Write(text5[1][1:]))
-        self.play(m.Indicate(text5[1][5]), m.Indicate(text5[1][11]))
+        self.play(m.Indicate(text5[1][1:6]), m.Indicate(text5[1][7:12]))
         self.wait()
         self.play(m.Write(text5[2]))
         self.wait()
-        self.play(m.Indicate(text4c[0]), m.Indicate(text5[1][0]), m.Indicate(text5[2][9:15]), run_time=2)
+        self.play(m.Write(text5[3]))
+        self.wait()
+        self.play(m.Indicate(text4c[0]), m.Indicate(text5[1][0]), m.Indicate(text5[3][1:]), run_time=2)
         self.wait()
 
         text6 = m.MathTex("2^{2k+4}", " < ", "2^{2k + 4}")
         text6.next_to(text5, m.DOWN, buff=0.5)
         self.play(movimation(text6[0], text4c[0].get_center()),
                 movimation(text6[1], text5[1][0].get_center()),
-                movimation(text6[2], text5[2][9:15].get_center()))
+                movimation(text6[2], text5[3][1:].get_center()))
+        self.play(m.FadeOut(m.Group(text2, text3, text4c, text5, smalls, larges)),
+                text6.animate.move_to(m.ORIGIN))
         self.wait()
 
