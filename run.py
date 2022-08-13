@@ -23,8 +23,13 @@ for scene_name in scene_names:
     os.system(f"manim -{qcmd[quality]} {'scripts/' + scene_name}.py {scene_name.capitalize()}")
 
 with open("media/videos/tmp.txt", mode="w") as fs:
-     fs.writelines([f"file '{scene_name}/{qfolder[quality]}/{scene_name.capitalize()}.mp4'\n" for scene_name in scene_names])
+    fs.writelines([f"file '{scene_name}/{qfolder[quality]}/{scene_name.capitalize()}.mp4'\n" for scene_name in scene_names])
 
-os.system("ffmpeg -f concat -i media/videos/tmp.txt -c copy -y output.mp4")
+with open("media/audio/tmp.txt", mode="w") as fs:
+    fs.writelines([f"file '{scene_name}.mp3'\n" for scene_name in scene_names])
+
+os.system("ffmpeg -f concat -i media/videos/tmp.txt -c copy -y media/videos/output.mp4")
+os.system("ffmpeg -f concat -i media/audio/tmp.txt -c copy -y media/audio/output.mp3")
+os.system("ffmpeg -i media/videos/output.mp4 -i media/audio/output.mp3 -y -shortest output.mp4")
 
 
