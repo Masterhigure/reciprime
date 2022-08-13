@@ -7,8 +7,8 @@ class Split(m.Scene):
         title = m.Tex(r"\underline{The sets to be estimated}", font_size=72)
         text1 = m.Tex(r"Let $n\in \Bbb N$.")
         text2 = m.Tex(r"$N = \{1, 2, \ldots, n\}$ splits into")
-        text3 = m.MathTex(r"\begin{array}{lr}N_{\textrm{small}}& \textrm{ with only small prime factors}\\" + \
-                r"N_{\textrm{large}}&\textrm{ with at least one large prime factor}\end{array}")
+        text3 = m.MathTex(r"\begin{array}{lr}N_{s}& \textrm{ with only small prime factors}\\" + \
+                r"N_{l}&\textrm{ with at least one large prime factor}\end{array}")
         text5 = m.Tex("We will now estimate their sizes")
         texts = [title, text1, text2, text3, text5]
 

@@ -100,7 +100,7 @@ class Problem(m.Scene):
     def fadeout_boxes(self, start, stop):
         offscreen_animations = self.offscreen_animations
         offscreen_boxes_group = self.offscreen_boxes_group
-        text1 = m.Tex(r"About \(10^{60\,000\,000}\) primes", font_size=100)
+        text1 = m.Tex(r"About \(10^{190\,000}\) primes", font_size=100)
         text2 = m.Tex("to reach the end of the screen", font_size=100)
         bg = m.ImageMobject("media/images/penrose.png")
         bg.fade(1)

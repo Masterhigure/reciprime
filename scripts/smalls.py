@@ -47,7 +47,7 @@ class Smalls(m.Scene):
 
         text3 = m.MathTex(r"\textrm{Possibilities for }x\textrm{: }", r"\left\lfloor\sqrt{n}\right\rfloor\leq ", r"\sqrt{n}")
         text4 = m.Tex(r"Possibilities for all the $e_i$: ", r"at most ", r"$2^k$")
-        text5 = m.Tex("Possibilities for $r$: ", r"less than ", r"$2^k\cdot \sqrt n$")
+        text5 = m.Tex("Possibilities for $r$: ", r"at most ", r"$2^k\cdot \sqrt n$")
         
         text3[0].move_to(text4, aligned_edge=m.LEFT)
         text5[0].move_to(text4, aligned_edge=m.LEFT)
