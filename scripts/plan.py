@@ -8,7 +8,7 @@ class Plan(m.Scene):
         subtitle2 = m.Tex("but I promise it will work out.)").next_to(subtitle1, m.DOWN)
         self.play(m.Write(title))
         self.play(m.Write(m.VGroup(subtitle1, subtitle2)))
-        self.wait(2)
+        self.wait()
         self.play(m.Unwrite(m.VGroup(subtitle1, subtitle2)), title.animate.to_edge(m.UP))
         return title
 
@@ -22,6 +22,7 @@ class Plan(m.Scene):
         conclusion1 = m.Tex(r"We will conclude that").next_to(limit, m.DOWN, buff=0.75)
         conclusion1b = m.Tex(r"some set $N = \{1, 2, \ldots, n\}$").next_to(conclusion1, m.DOWN)
         conclusion2 = m.Tex("has fewer than $n$ elements.").next_to(conclusion1b, m.DOWN)
+
         self.play(m.Write(headline))
         self.play(m.Write(true_limit))
         self.play(m.Unwrite(headline))
@@ -29,7 +30,9 @@ class Plan(m.Scene):
         self.play(m.ReplacementTransform(true_limit[0], limit[0]),
                 m.FadeIn(limit[1]),
                 m.ReplacementTransform(true_limit[1], limit[2]))
+        self.wait(5)
         self.play(m.Write(m.VGroup(conclusion1, conclusion1b, conclusion2)))
+        self.wait(5)
         self.play(m.Unwrite(m.VGroup(title, idea1, idea2, limit, conclusion1, conclusion1b, conclusion2)))
         self.wait(1)
 

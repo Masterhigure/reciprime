@@ -4,20 +4,30 @@ from background import add_background
 class Larges(m.Scene):
     def construct(self):
         add_background(self)
-        smalltext = m.MathTex(r"n_s \leq \sqrt k\cdot 2^k")
+        smalltext = m.MathTex(r"n_s \leq 2^k\cdot\sqrt{n}")
         smalltext.to_corner(m.DOWN+ m.LEFT)
         self.add(smalltext)
 
         text1 = m.Tex(r"\underline{Estimating $n_l = |N_l|$}", font_size = 72)
-        text4 = m.Tex(r"$\left\lfloor\frac np\right\rfloor$ numbers in $N$ are divisible by $p$")
+        text4 = m.Tex(r"$\left\lfloor\frac np\right\rfloor$", " numbers in $N$ ", "are", " divisible by $p$")
 
         text1.to_edge(m.UP)
         text4.next_to(text1, m.DOWN)
 
         self.play(m.Write(text1))
+        self.wait(1)
         self.play(m.Write(text4))
         self.wait()
-        
+        self.play(m.ApplyWave(text4[1], m.RIGHT))
+        self.play(m.ApplyWave(text4[3], m.RIGHT))
+        self.wait()
+        center = text4[0].get_center()
+        self.play(text4[0][1:4].animate.scale(1.5, about_point=center))
+        self.wait()
+        self.play(text4[0][0].animate.scale(1.5, about_point=center),
+                text4[0][4].animate.scale(1.5, about_point=center))
+        self.play(text4[0].animate.scale(1/1.5))
+
         text5a = m.Tex(r"So how many numbers in $N$ are divisble")
         text5b = m.Tex(r"by \emph{at least one} large prime?")
         text6 = m.Tex(r"Add the contribution from each large prime:")
@@ -42,16 +52,23 @@ class Larges(m.Scene):
         text7d.move_to(text7c, aligned_edge=m.LEFT)
         text7e.move_to(text7d[2], aligned_edge=m.LEFT)
 
-        self.play(m.Write(text5a), m.Write(text5b))
+        self.play(m.Write(text5a))
+        self.play(m.Write(text5b))
+        self.wait()
         self.play(m.Write(text6))
+        self.wait(13)
         self.play(m.Write(text7a))
+        self.wait(8)
         self.play(text7a.animate.move_to(text7b, aligned_edge=m.LEFT), m.Write(text7b[1]))
+        self.wait(2)
         self.remove(text7a)
         self.add(text7b)
         self.wait()
         self.play(m.Transform(text7b[1][11], text7c[1][1]),
                 m.Write(text7c[1][12]))
         self.wait()
+        self.play(m.Indicate(m.Group(text7b[1][1:11], text7b[1][12:15], text7c[1][12])))
+        self.wait(2)
         self.play(m.Write(text7d[2]))
         self.wait()
         self.play(m.FadeOut(text7d[2][2:4]),

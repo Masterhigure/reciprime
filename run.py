@@ -1,6 +1,6 @@
 import os
 
-quality = 0
+quality = 1
 
 qfolder = ["480p15", "1080p60"]
 qcmd = ["ql", "qh"]

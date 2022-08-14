@@ -1,3 +1,4 @@
+media/images/thumb*
 media/Tex*
 media/images/reci*
 media/images/small*
@@ -13,4 +14,3 @@ pbcopy
 pyrightconfig*
 media/.DS_store
 output.mp4
-

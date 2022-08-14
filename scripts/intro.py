@@ -8,9 +8,9 @@ class Intro(m.Scene):
         text1.shift(m.UP*0.75)
         text2.next_to(text1, m.DOWN)
         self.play(m.FadeIn(text1))
-        self.wait()
-        self.play(m.FadeIn(text2))
         self.wait(2)
+        self.play(m.FadeIn(text2))
+        self.wait(7)
         self.play(m.FadeOut(text1, text2))
         self.wait()
 
@@ -21,10 +21,11 @@ class Intro(m.Scene):
         dist = scale*6.5 - 4
         image.shift(dist*m.DOWN)
         self.play(m.FadeIn(image))
-        self.play(image.animate.shift(2*dist*m.UP), run_time=8)
-        self.wait()
-        self.play(image.animate.shift(0.514*dist*m.DOWN), run_time=2)
         self.wait(2)
+        self.play(image.animate.shift(2*dist*m.UP), run_time=12)
+        self.wait(5)
+        self.play(image.animate.shift(0.514*dist*m.DOWN), run_time=4)
+        self.wait(4)
         self.play(m.FadeOut(image))
         
     def construct(self):

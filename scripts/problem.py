@@ -9,7 +9,7 @@ class Problem(m.Scene):
         self.align_boxes()
         self.pile_boxes(14)
         self.fadeout_boxes(14, 17)
-        self.faded_boxes(17, 30, 35)
+        self.faded_boxes(17, 40, 45)
 
     def box_numbers(self):
         numbers = []
@@ -38,11 +38,13 @@ class Problem(m.Scene):
             b2 = m.Rectangle(width=0.52/p, height=0.52*p).move_to(b)
             brace = m.Brace(b2, m.LEFT)
             braces.append(brace)
-            squish_animations.append(m.Transform(b, b2))
-            brace_and_number_anims.append(m.AnimationGroup(numbers[p-1].animate.next_to(brace, m.LEFT, buff=0.15), m.FadeIn(brace)))
-        squish_anim_group = m.AnimationGroup(*squish_animations, lag_ratio=0.8)
-        brace_num_anim_group = m.AnimationGroup(*brace_and_number_anims, lag_ratio=0.8)
+            squish_animations.append(m.Transform(b, b2, run_time=(2 if p < 7 else 0.5)))
+            brace_and_number_anims.append(m.AnimationGroup(numbers[p-1].animate.next_to(brace, m.LEFT, buff=0.15), m.FadeIn(brace), run_time=(2 if p < 7 else 0.5)))
+        squish_anim_group = m.AnimationGroup(*squish_animations, lag_ratio=0.9)
+        brace_num_anim_group = m.AnimationGroup(*brace_and_number_anims, lag_ratio=0.9)
+        self.wait(5)
         self.play(squish_anim_group, brace_num_anim_group)
+        self.wait(3)
         self.braces = braces
 
     def align_boxes(self):
@@ -56,7 +58,8 @@ class Problem(m.Scene):
             align_animations.append(m.AnimationGroup(
                 box.animate.shift(0.52*p/2*m.UP + 2*m.DOWN),
                 m.Transform(brace, brace2),
-                m.Transform(numbers[p-1], m.MathTex(r"\frac1{" + str(p) + "}").next_to(brace2, m.DOWN))))
+                m.Transform(numbers[p-1], m.MathTex(r"\frac1{" + str(p) + "}").next_to(brace2, m.DOWN)),
+                run_time=(2.2 if p < 7 else 0.5)))
         align_anim_group = m.AnimationGroup(*align_animations, lag_ratio=1)
         self.play(align_anim_group)
         self.play(*[m.FadeOut(b) for b in braces],
